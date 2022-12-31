@@ -95,10 +95,10 @@ public class NativeSurfaceView extends SurfaceView implements SensorEventListene
 					code |= tool << 10; // We use the Android tool type codes
 				}
 				// Can't use || due to short circuit evaluation
-				numTouchesHandled += NativeApp.touch(ev.getX(i), ev.getY(i), code, pid) ? 1 : 0;
+				NativeApp.touch(ev.getX(i), ev.getY(i), code, pid);
 			}
 		}
-		return numTouchesHandled > 0;
+		return true;
 	}
 
 	// Sensor management
