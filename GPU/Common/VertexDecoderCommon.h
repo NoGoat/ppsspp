@@ -353,6 +353,8 @@ public:
 	void Step_WeightsU16Skin() const;
 	void Step_WeightsFloatSkin() const;
 
+	void Step_TcDefault() const;
+
 	void Step_TcU8ToFloat() const;
 	void Step_TcU16ToFloat() const;
 	void Step_TcFloat() const;
@@ -509,6 +511,8 @@ public:
 	void Jit_WeightsU8Skin();
 	void Jit_WeightsU16Skin();
 	void Jit_WeightsFloatSkin();
+
+	void Jit_TcDefault();
 
 	void Jit_TcU8ToFloat();
 	void Jit_TcU16ToFloat();
