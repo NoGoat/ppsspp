@@ -1171,7 +1171,7 @@ void VertexDecoder::SetVertexType(u32 fmt, const VertexDecoderOptions &options, 
 
 		decFmt.uvoff = decOff;
 		decOff += DecFmtSize(decFmt.uvfmt);
-	} else {
+	} else if (options.injectDummyUVIfMissing) {
 		steps_[numSteps_++] = &VertexDecoder::Step_TcDefault;
 		decFmt.uvfmt = DEC_FLOAT_2;
 		decFmt.uvoff = decOff;

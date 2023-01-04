@@ -490,7 +490,7 @@ void VertexDecoderJitCache::Jit_WeightsFloatSkin() {
 }
 
 void VertexDecoderJitCache::Jit_TcDefault() {
-	VMOV_immf(tempReg1, 0.0f);
+	MOVI(tempReg1, 0);
 	STR(tempReg1, dstReg, dec_->decFmt.uvoff);
 	STR(tempReg1, dstReg, dec_->decFmt.uvoff + 4);
 }
