@@ -12,8 +12,7 @@
 enum VShaderBit : uint8_t {
 	VS_BIT_LMODE = 0,
 	VS_BIT_IS_THROUGH = 1,
-	// 2, 3 are free
-	VS_BIT_DO_TEXTURE = 4,
+	// 2, 3, 4 are free
 	VS_BIT_VERTEX_RANGE_CULLING = 5,
 	VS_BIT_SIMPLE_STEREO = 6,
 	// 7 is free.

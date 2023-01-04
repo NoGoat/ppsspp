@@ -20,7 +20,6 @@ std::string VertexShaderDesc(const VShaderID &id) {
 	if (id.Bit(VS_BIT_USE_HW_TRANSFORM)) desc << "HWX ";
 	if (id.Bit(VS_BIT_LMODE)) desc << "LM ";
 	if (id.Bit(VS_BIT_NORM_REVERSE)) desc << "RevN ";
-	if (id.Bit(VS_BIT_DO_TEXTURE)) desc << "Tex ";
 	int uvgMode = id.Bits(VS_BIT_UVGEN_MODE, 2);
 	if (uvgMode == GE_TEXMAP_TEXTURE_MATRIX) {
 		int uvprojMode = id.Bits(VS_BIT_UVPROJ_MODE, 2);
@@ -88,8 +87,6 @@ void ComputeVertexShaderID(VShaderID *id_out, VertexDecoder *vertexDecoder, bool
 	}
 
 	if (doTexture) {
-		id.SetBit(VS_BIT_DO_TEXTURE);
-
 		// UV generation mode. doShadeMapping is implicitly stored here.
 		id.SetBits(VS_BIT_UVGEN_MODE, 2, gstate.getUVGenMode());
 	}

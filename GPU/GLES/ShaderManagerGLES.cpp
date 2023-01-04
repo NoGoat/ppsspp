@@ -853,7 +853,6 @@ LinkedShader *ShaderManagerGLES::ApplyFragmentShader(VShaderID VSID, Shader *vs,
 	shaderSwitchDirtyUniforms_ = 0;
 
 	if (ls == nullptr) {
-		_dbg_assert_(FSID.Bit(FS_BIT_DO_TEXTURE) == VSID.Bit(VS_BIT_DO_TEXTURE));
 		_dbg_assert_(FSID.Bit(FS_BIT_FLATSHADE) == VSID.Bit(VS_BIT_FLATSHADE));
 
 		// Check if we can link these.
@@ -945,7 +944,7 @@ enum class CacheDetectFlags {
 };
 
 #define CACHE_HEADER_MAGIC 0x83277592
-#define CACHE_VERSION 21
+#define CACHE_VERSION 22
 struct CacheHeader {
 	uint32_t magic;
 	uint32_t version;
