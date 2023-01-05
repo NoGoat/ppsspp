@@ -76,6 +76,9 @@ void BaseUpdateUniforms(UB_VS_FS_Base *ub, uint64_t dirtyUniforms, bool flipView
 	if (dirtyUniforms & DIRTY_TEXENV) {
 		Uint8x3ToFloat3(ub->texEnvColor, gstate.texenvcolor);
 	}
+	if (dirtyUniforms & DIRTY_TEX_MUL) {
+		ub->texMul = gstate.isColorDoublingEnabled() ? 2.0f : 1.0f;
+	}
 	if (dirtyUniforms & DIRTY_ALPHACOLORREF) {
 		ub->alphaColorRef = gstate.getColorTestRef() | ((gstate.getAlphaTestRef() & gstate.getAlphaTestMask()) << 24);
 	}

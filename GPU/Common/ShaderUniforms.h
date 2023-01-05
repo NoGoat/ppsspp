@@ -11,7 +11,7 @@ enum : uint64_t {
 	DIRTY_WORLDMATRIX | DIRTY_PROJTHROUGHMATRIX | DIRTY_VIEWMATRIX | DIRTY_TEXMATRIX | DIRTY_ALPHACOLORREF |
 	DIRTY_PROJMATRIX | DIRTY_FOGCOLOR | DIRTY_FOGCOEFENABLE | DIRTY_TEXENV | DIRTY_STENCILREPLACEVALUE |
 	DIRTY_ALPHACOLORMASK | DIRTY_SHADERBLEND | DIRTY_COLORWRITEMASK | DIRTY_UVSCALEOFFSET | DIRTY_TEXCLAMP | DIRTY_DEPTHRANGE | DIRTY_MATAMBIENTALPHA |
-	DIRTY_BEZIERSPLINE | DIRTY_DEPAL,
+	DIRTY_BEZIERSPLINE | DIRTY_DEPAL | DIRTY_TEX_MUL,
 	DIRTY_LIGHT_UNIFORMS =
 	DIRTY_LIGHT_CONTROL | DIRTY_LIGHT0 | DIRTY_LIGHT1 | DIRTY_LIGHT2 | DIRTY_LIGHT3 |
 	DIRTY_MATDIFFUSE | DIRTY_MATSPECULAR | DIRTY_MATEMISSIVE | DIRTY_AMBIENT,
@@ -39,6 +39,7 @@ struct alignas(16) UB_VS_FS_Base {
 	float blendFixB[3]; float rotation;
 	float texClamp[4];
 	float texClampOffset[2]; float fogCoef[2];
+	float texMul; float padding[3];
 	// VR stuff is to go here, later. For normal drawing, we can then get away
 	// with just uploading the first 448 bytes of the struct (up to and including fogCoef).
 };
@@ -65,6 +66,7 @@ R"(  mat4 u_proj;
   vec4 u_texclamp;
   vec2 u_texclampoff;
   vec2 u_fogcoef;
+  float u_texMul; float pad0; float pad1; float pad2;
 )";
 
 // 512 bytes. Would like to shrink more. Some colors only have 8-bit precision and we expand
