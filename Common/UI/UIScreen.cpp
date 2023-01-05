@@ -234,6 +234,7 @@ PopupScreen::PopupScreen(std::string title, std::string button1, std::string but
 void PopupScreen::touch(const TouchInput &touch) {
 	if (!box_ || (touch.flags & TOUCH_DOWN) == 0) {
 		UIDialogScreen::touch(touch);
+		return;
 	}
 
 	if (!box_->GetBounds().Contains(touch.x, touch.y)) {
